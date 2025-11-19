@@ -1,0 +1,56 @@
+$engine: 3
+$onesync: on
+name: Five Race Framework
+version: 1.0.0
+author: SPCL0UD
+description: Framework de carreras con creador de personaje y prologue.
+
+tasks:
+  # ==========================
+  #  DESCARGAR RECURSOS
+  # ==========================
+
+  # Núcleo de carreras
+  - action: download_github
+    src: https://github.com/SPCL0UD/Five-race-core
+    ref: main
+    dest: ./resources/[race]/five-race-core
+
+  # Creador de personaje
+  - action: download_github
+    src: https://github.com/SPCL0UD/Five-character-creator
+    ref: main
+    dest: ./resources/[race]/five-character-creator
+
+  # Prologue / modo inicial
+  - action: download_github
+    src: https://github.com/SPCL0UD/five-race-prologue
+    ref: main
+    dest: ./resources/[race]/five-race-prologue
+
+  # ==========================
+  #  SERVER CONFIG
+  # ==========================
+
+  # Escribir un server.cfg básico
+  - action: write_file
+    path: ./server.cfg
+    mode: overwrite
+    data: |
+      # Five Race Framework - server.cfg generado por recipe
+      endpoint_add_tcp "0.0.0.0:30120"
+      endpoint_add_udp "0.0.0.0:30120"
+
+      sv_hostname "Five Race Framework"
+      sv_maxclients 48
+
+      sets locale "es-ES"
+
+      # Licencias las configura txAdmin
+      # sv_licenseKey ""
+
+      ensure five-race-core
+      ensure five-character-creator
+      ensure five-race-prologue
+
+  # No usamos DB aquí; si más tarde tienes .sql lo agregamos con connect_database/query_database
