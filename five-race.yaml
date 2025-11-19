@@ -24,21 +24,15 @@ tasks:
     ref: main
     dest: ./resources/[race]/five-race-prologue
 
-  - action: write_file
-    path: server.cfg
-    data: |
-      # Five Race Framework - server.cfg generado por recipe
-      endpoint_add_tcp "0.0.0.0:30120"
-      endpoint_add_udp "0.0.0.0:30120"
+  # Descargar server.cfg desde tu propio repo de recipes
+  - action: download_github
+    src: https://github.com/SPCL0UD/txadmin-recipe
+    ref: main
+    dest: ./tmp/five-race-cfg
 
-      sv_hostname "Five Race Framework"
-      sv_maxclients 48
+  - action: move_path
+    src: ./tmp/five-race-cfg/server.cfg
+    dest: ./server.cfg
 
-      sets locale "es-ES"
-
-      # Licencias las configura txAdmin
-      # sv_licenseKey ""
-
-      ensure five-race-core
-      ensure five-character-creator
-      ensure five-race-prologue
+  - action: remove_path
+    path: ./tmp
