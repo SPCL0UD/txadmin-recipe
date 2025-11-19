@@ -33,6 +33,16 @@ tasks:
   - action: move_path
     src: ./tmp/five-race-cfg/server.cfg
     dest: ./server.cfg
+  # ==========================
+  #  DATABASE: OXMYSQL
+  # ==========================
+  - action: download_file
+    path: ./tmp/files/oxmysql.zip
+    url: https://github.com/overextended/oxmysql/releases/download/v2.12.0/oxmysql.zip
+
+  - action: unzip
+    src: ./tmp/files/oxmysql.zip
+    dest: ./resources/[standalone]
 
   - action: remove_path
     path: ./tmp
