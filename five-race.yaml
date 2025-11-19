@@ -6,10 +6,6 @@ author: SPCL0UD
 description: Framework de carreras con creador de personaje y prologue.
 
 tasks:
-  # ==========================
-  #  DESCARGAR RECURSOS
-  # ==========================
-
   # Núcleo de carreras
   - action: download_github
     src: https://github.com/SPCL0UD/Five-race-core
@@ -28,14 +24,9 @@ tasks:
     ref: main
     dest: ./resources/[race]/five-race-prologue
 
-  # ==========================
-  #  SERVER CONFIG
-  # ==========================
-
   # Escribir un server.cfg básico
   - action: write_file
-    path: ./server.cfg
-    mode: overwrite
+    path: server.cfg
     data: |
       # Five Race Framework - server.cfg generado por recipe
       endpoint_add_tcp "0.0.0.0:30120"
@@ -52,5 +43,3 @@ tasks:
       ensure five-race-core
       ensure five-character-creator
       ensure five-race-prologue
-
-  # No usamos DB aquí; si más tarde tienes .sql lo agregamos con connect_database/query_database
