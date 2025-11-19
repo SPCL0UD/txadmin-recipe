@@ -24,7 +24,6 @@ tasks:
     ref: main
     dest: ./resources/[race]/five-race-prologue
 
-  # Escribir un server.cfg básico
   - action: write_file
     path: server.cfg
     data: |
