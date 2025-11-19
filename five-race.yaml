@@ -41,9 +41,6 @@ tasks:
     url: https://github.com/overextended/oxmysql/releases/download/v2.12.0/oxmysql.zip
 
   - action: connect_database
-
-  - action: query_database
-    file: ./tmp/five-race-cfg/five_race.sql
   
   - action: unzip
     src: ./tmp/files/oxmysql.zip
